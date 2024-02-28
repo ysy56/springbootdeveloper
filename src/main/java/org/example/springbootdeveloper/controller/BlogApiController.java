@@ -49,4 +49,13 @@ public class BlogApiController {
         return ResponseEntity.ok()
                 .body(new ArticleResponse(article));
     }
+
+    @DeleteMapping("/api/articles/{id}")
+    // URL에서 {id}에 해당하는 값이 id로 들어옴
+    public ResponseEntity<Void> deleteArticle(@PathVariable long id) {
+        blogService.delete(id);
+
+        return ResponseEntity.ok()
+                .build();
+    }
 }
