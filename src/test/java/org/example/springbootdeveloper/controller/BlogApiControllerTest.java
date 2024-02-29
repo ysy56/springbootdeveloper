@@ -122,6 +122,7 @@ class BlogApiControllerTest {
                 .andExpect(jsonPath("$.title").value(title));
     }
 
+    // test
     @DisplayName("deleteArticle: 블로그 글 삭제에 성공한다.")
     @Test
     public void deleteArticle() throws Exception {
