@@ -3,6 +3,7 @@ package org.example.springbootdeveloper.controller;
 import lombok.RequiredArgsConstructor;
 import org.example.springbootdeveloper.domain.Article;
 import org.example.springbootdeveloper.dto.ArticleListViewResponse;
+import org.example.springbootdeveloper.dto.ArticleViewResponse;
 import org.example.springbootdeveloper.service.BlogService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,5 +28,13 @@ public class BlogViewController {
         model.addAttribute("articles", articles);
 
         return "articleList";
+    }
+
+    @GetMapping("/articles/{id}")
+    public String getArticle(@PathVariable Long id, Model model) {
+        Article article = blogService.findById(id);
+        model.addAttribute("article", new ArticleViewResponse(article));
+
+        return "article";
     }
 }
